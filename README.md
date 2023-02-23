@@ -47,8 +47,3 @@ command with flags.  This command lists directory contents.
 ```
 $ ls -la
 ```
-                                                         
-
-## Ref
-* Olumide Micheal Tolulope <olumidemicheal7@gmail.com>
-* Ahmed Gbadamosi
