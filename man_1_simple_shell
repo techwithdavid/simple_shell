@@ -1,0 +1,147 @@
+.\" simple_shell man page
+.\"
+.\"
+.TH simple_shell 1 "3 November 2021" "Alx students simple_shell"
+
+
+
+.SH NAME
+
+.B simple_shell (hsh)
+- command interpreter (shell)
+
+
+
+.SH SYNOPSIS
+
+.B	./hsh
+
+
+
+.SH COPYRIGHT
+
+simple_shell is Public Domain, no copyright protection
+
+
+
+.SH DESCRIPTION
+
+simple_shell replicates a command line interpreter (a shell), which is a user \
+interface program for access to an operating system's services.  This shell \
+is designed to interact with a linux distribution or unix like system that \
+uses linux system calls and other commands found in the linux PATH, for \
+example, the
+.B $PATH:
+.P
+.RS
+.B /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:
+.P
+.RE
+simple_shell has a set of custom built-in commands, and also integrates with other \
+commands located in the system's PATH.  The output is designed to exactly or \
+as close as possible replicate the shell 'sh' or 'dash'
+.B $ man dash
+.  simple_shell \
+takes commands from files, shell scripts or user input in either an \
+interactive or non-interactive mode (explained in INVOCATION section).
+
+
+
+
+.SH INVOCATION
+
+to initialize simple_shell, you must compile all the included files using the GNU \
+compiler collection: gcc.  Then run the output file, with a command such as \
+this: $ ./a.out.  simple_shell has been written to pass all of these warning checks \
+and was designed to be compiled with the following command:
+.P
+.RS
+.B $ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+.P
+.RE
+if simple_shell is executed, it will initialize in what is considered 'interactive \
+mode.'  In this scenario, the user is prompted for a command and then the \
+command is executed after the newline or 'enter' is input.  simple_shell can also \
+function in non-interactive mode by using shell scripts, such as a '|' before
+the simple_shell executable file ('hsh').  This is an example:
+.P
+.RS
+.B $ echo 'ls' | ./hsh
+.P
+.RE
+Commands may also be input into simple_shell through a file containing commands:
+.P
+.RS
+.B $ cat aFile | ./hsh
+.P
+.RE
+
+
+
+.SH OPTIONS
+
+simple_shell does not take any options but does utilize the variable extern char \
+**environ.  This is currently part of the future goals of simple_shell
+
+
+.SS BUILT-IN COMMANDS
+
+.RS
+This secion has information on the included builtin commands with simple_shell
+
+.Bl -tag -width "PAGEIN" -compact -offset indent
+
+.It
+.B env
+- writes environment to stdout
+
+.IT
+.B setenv
+- sets or changes an environmental variable. example: 'setenv USER=bobby'
+
+.IT
+.B unsetenv
+- removes environmental variable. example: 'unsetenv USER'
+
+.IT
+.B history
+- writes history to stdout
+
+
+.IT
+.B exit
+- exits simple_shell
+
+.IT
+.B cd
+- changes working directory
+
+.IT
+.B help
+- used with another command prints help message.  example: 'help env'
+
+.IT
+.B alias
+- creates an alias.  example 'alias ll='ls -la''
+
+.IT
+.B unalias
+- removes an alias.  example 'unalias ll'
+.RE
+
+
+.SH "SEE ALSO"
+
+.BR sh (1),
+.BR bash (1),
+
+
+
+.SH BUGS
+
+none known.  simple_shell does not currently replicate these tasks:
+
+.SH AUTHOR
+
+Olumide Micheal Tolulope <olumidemicheal7@gmail.com>
+Ahmed Gbadamosi <amurtala@gmail.com>
